@@ -9,13 +9,25 @@
     <p>No Events Yet!</p>
 }
 
-<ul>
-    @foreach(string meeting in ViewBag.events)
-            {
-                <li>@meeting</li>
-            }
-</ul>
 
-<partial name="/Views/Shared/_LinkListPartial.cshtml" />
+<table class="table">
+    <thead>
+        <tr>
+            <th scope="col">Event</th>
+            <th scope="col">Description</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (KeyValuePair<string, string> activity in ViewBag.events)
+        {
+            <tr>
+                <td>@activity.Key</td>
+                <td>@activity.Value</td>
+            </tr>
+        }
+    </tbody>
+</table>
 
-<img src="~/images/office.jpg">
+@*<partial name="/Views/Shared/_LinkListPartial.cshtml" />
+
+<img src="~/images/office.jpg">*@
