@@ -1,0 +1,18 @@
+﻿@*//Question 5 & 5.a*@
+
+<h1>Edit Event and Description</h1>
+
+<form method="post" action="/events/edit">@*Question 7.b*@
+    <label for="name">Event</label>
+    <input name="name" id="name" type="text" value="@ViewBag.eventToEdit.Name" /> @*Question 7.a*@
+    <br />
+    <br />
+    <label for="description">Description</label>
+    <input name="description" id="description" type="text" value="@ViewBag.eventToEdit.Description" /> @*Question 7.a*@
+    <br />
+    <br />
+    <input type="hidden" value="@ViewBag.eventToEdit.Id" name="eventId" /> @*Question 8*@
+    <br />
+    <br />
+    <input type="submit" value="Edit Event and Description" />
+</form>

@@ -4,29 +4,39 @@
     <a asp-controller="Events" asp-action="Add">Add Event</a>
 </p>
 
+<p>
+    <a asp-controller="Events" asp-action="Delete">Delete Event</a>
+</p>
+
+
+
 @if (ViewBag.events.Count == 0)
 {
     <p>No Events Yet!</p>
 }
-
-
+else
+{
 <table class="table">
     <thead>
         <tr>
+            <th scope="col">Id</th>
             <th scope="col">Event</th>
             <th scope="col">Description</th>
         </tr>
     </thead>
     <tbody>
-        @foreach (KeyValuePair<string, string> activity in ViewBag.events)
+        @foreach (var activity in ViewBag.events)
         {
-            <tr>
-                <td>@activity.Key</td>
-                <td>@activity.Value</td>
-            </tr>
+        <tr>
+            <td>@activity.Id</td>
+            <td>@activity.Name</td>
+            <td>@activity.Description</td>
+            <td><a asp-controller="Events" asp-action="Edit" asp-route-id="@activity.Id">Edit Event</a></td> @*Question 11*@
+        </tr>
         }
     </tbody>
-</table>
+</table>  
+}
 
 @*<partial name="/Views/Shared/_LinkListPartial.cshtml" />
 
