@@ -35,5 +35,11 @@
         <span asp-validation-for="NumberOfAttendees"></span>
     </div>
 
+    <div asp-controller="Events" asp-action="Add" class="form-group">
+        <label asp-for="Type">Event Types</label>
+        <select asp-for="Type" asp-items="Model.EventTypes"></select>
+        
+    </div>
+
     <input type="submit" value="Add Event" />
 </form>

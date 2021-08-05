@@ -1,8 +1,10 @@
-﻿using System;
+﻿using CodingEvents.Models;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Mvc.Rendering;
 
 namespace CodingEvents.ViewModels
 {
@@ -23,6 +25,16 @@ namespace CodingEvents.ViewModels
         public string Location { get; set; }
 
         [Range(0,10000)]
-        public string NumberOfAttendees { get; set; }
+        public int NumberOfAttendees { get; set; }
+
+        public EventType Type { get; set; }
+
+        public List<SelectListItem> EventTypes { get; set; } = new List<SelectListItem>
+        {
+            new SelectListItem(EventType.Conference.ToString(), ((int)EventType.Conference).ToString()),
+            new SelectListItem(EventType.Meetup.ToString(), ((int)EventType.Meetup).ToString()),
+            new SelectListItem(EventType.Workshop.ToString(), ((int)EventType.Workshop).ToString()),
+            new SelectListItem(EventType.Social.ToString(), ((int)EventType.Social).ToString())
+        };
     }
 }
