@@ -1,0 +1,15 @@
+﻿@using CodingEvents.ViewModels;
+
+@model Tag;
+
+<h1>Add New Tag</h1>
+<br />
+<form asp-controller="Tag" asp-action="ProcessCreateTagForm" method="post">
+    <div class="form-group">
+        <label asp-for="Name"></label>
+        <input asp-for="Name" />
+        <span asp-validation-for="Name"></span>
+    </div>
+
+    <input type="submit" value="Create Tag Name" />
+</form>

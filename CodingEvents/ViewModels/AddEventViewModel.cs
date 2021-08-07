@@ -11,7 +11,7 @@ namespace CodingEvents.ViewModels
     public class AddEventViewModel
     {
         [Required(ErrorMessage = "Please enter name of Event")]
-        [StringLength(50, MinimumLength =3, ErrorMessage ="Name must be between 3 and 50 characters")]
+        [StringLength(50, MinimumLength = 3, ErrorMessage = "Name must be between 3 and 50 characters")]
         public string Name { get; set; }
 
         [Required(ErrorMessage = "Please enter a description of Event")]
@@ -24,17 +24,32 @@ namespace CodingEvents.ViewModels
         [Required]
         public string Location { get; set; }
 
-        [Range(0,10000)]
+        [Range(0, 10000)]
         public int NumberOfAttendees { get; set; }
 
-        public EventType Type { get; set; }
+        [Required(ErrorMessage = "Category is Required")]
+        public int CategoryId { get; set; }
 
-        public List<SelectListItem> EventTypes { get; set; } = new List<SelectListItem>
+        public List<SelectListItem> Categories { get; set; }
+
+        public AddEventViewModel(List<EventCategory> categories)
         {
-            new SelectListItem(EventType.Conference.ToString(), ((int)EventType.Conference).ToString()),
-            new SelectListItem(EventType.Meetup.ToString(), ((int)EventType.Meetup).ToString()),
-            new SelectListItem(EventType.Workshop.ToString(), ((int)EventType.Workshop).ToString()),
-            new SelectListItem(EventType.Social.ToString(), ((int)EventType.Social).ToString())
-        };
+            Categories = new List<SelectListItem>();
+
+            foreach (var category in categories)
+            {
+                Categories.Add(new SelectListItem
+                {
+                    Value = category.Id.ToString(),
+                    Text = category.Name
+                }
+                );
+            }
+        }
+
+        public AddEventViewModel()
+        { 
+        }
+
     }
 }
